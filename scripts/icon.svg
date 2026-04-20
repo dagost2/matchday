@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="shield">
+      <path d="M56,24 H456 V298 Q456,460 256,488 Q56,460 56,298 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Shield: red fill -->
+  <path d="M56,24 H456 V298 Q456,460 256,488 Q56,460 56,298 Z" fill="#CC0000"/>
+
+  <!-- Top-right quadrant: white -->
+  <rect x="256" y="24" width="200" height="156" fill="white" clip-path="url(#shield)"/>
+
+  <!-- Bottom section: white -->
+  <rect x="56" y="180" width="400" height="320" fill="white" clip-path="url(#shield)"/>
+
+  <!-- Bottom side strips: red (left) -->
+  <rect x="56" y="180" width="68" height="320" fill="#CC0000" clip-path="url(#shield)"/>
+  <!-- Bottom side strips: red (right) -->
+  <rect x="388" y="180" width="68" height="320" fill="#CC0000" clip-path="url(#shield)"/>
+
+  <!-- Horizontal divider (white band on red quarter, red band on white quarter) -->
+  <rect x="56" y="174" width="400" height="12" fill="white" clip-path="url(#shield)"/>
+
+  <!-- Vertical divider in top half -->
+  <rect x="251" y="24" width="10" height="162" fill="white"/>
+
+  <!-- Shield outer border -->
+  <path d="M56,24 H456 V298 Q456,460 256,488 Q56,460 56,298 Z" fill="none" stroke="white" stroke-width="10"/>
+
+  <!-- ══ FLEUR-DE-LIS (white) — top-left quadrant, centered at (156, 100) ══ -->
+  <!-- Top spear tip circle -->
+  <circle cx="156" cy="46" r="19" fill="white"/>
+  <!-- Central stem -->
+  <rect x="149" y="42" width="14" height="92" fill="white"/>
+  <!-- Left petal -->
+  <path d="M149,88 C143,80 116,74 106,95 C99,112 110,132 124,133 C138,134 149,122 149,110 Z" fill="white"/>
+  <!-- Right petal -->
+  <path d="M163,88 C169,80 196,74 206,95 C213,112 202,132 188,133 C174,134 163,122 163,110 Z" fill="white"/>
+  <!-- Crossbar -->
+  <rect x="102" y="128" width="108" height="18" fill="white" rx="9"/>
+
+  <!-- ══ SOUTHERN CROSS STARS (red) — top-right quadrant ══ -->
+  <!-- 4 stars + 1 small. Star points: outer R=21, inner r=8.5 -->
+  <!-- Star macro: outer pts at -90°+k*72°, inner at -54°+k*72° -->
+  <!-- Alpha (top, large): center (352, 60) -->
+  <polygon fill="#CC0000" points="352,39 356,52.5 370,53 359.6,61.2 363.4,75 352,66.8 340.6,75 344.4,61.2 334,53 348,52.5"/>
+  <!-- Beta (right, large): center (418, 95) -->
+  <polygon fill="#CC0000" points="418,74 422,87.5 436,88 425.6,96.2 429.4,110 418,101.8 406.6,110 410.4,96.2 400,88 414,87.5"/>
+  <!-- Gamma (bottom, large): center (385, 148) -->
+  <polygon fill="#CC0000" points="385,127 389,140.5 403,141 392.6,149.2 396.4,163 385,154.8 373.6,163 377.4,149.2 367,141 381,140.5"/>
+  <!-- Delta (left, large): center (303, 120) -->
+  <polygon fill="#CC0000" points="303,99 307,112.5 321,113 310.6,121.2 314.4,135 303,126.8 291.6,135 295.4,121.2 285,113 299,112.5"/>
+  <!-- Epsilon (small): center (328, 60) R=13, r=5 -->
+  <polygon fill="#CC0000" points="328,47 330.5,55.5 339.5,55.5 332.7,60.7 335,69.5 328,64.5 321,69.5 323.3,60.7 316.5,55.5 325.5,55.5"/>
+
+  <!-- ══ CROWN (red) — bottom section ══ -->
+  <!-- 5-point crown with alternating tall/short peaks -->
+  <polygon fill="#CC0000" points="
+    176,358
+    176,332
+    200,232
+    224,332
+    234,274
+    244,332
+    256,215
+    268,332
+    278,274
+    288,332
+    312,232
+    336,332
+    336,358
+  "/>
+  <!-- Jewel circles at each peak -->
+  <circle cx="200" cy="226" r="12" fill="#CC0000"/>
+  <circle cx="234" cy="268" r="9"  fill="#CC0000"/>
+  <circle cx="256" cy="209" r="13" fill="#CC0000"/>
+  <circle cx="278" cy="268" r="9"  fill="#CC0000"/>
+  <circle cx="312" cy="226" r="12" fill="#CC0000"/>
+
+  <!-- ══ SOCCER BALL (center bottom) ══ -->
+  <circle cx="256" cy="418" r="54" fill="white" stroke="#222" stroke-width="3"/>
+  <!-- Central hexagon (dark) -->
+  <circle cx="256" cy="418" r="16" fill="#1a1a1a"/>
+  <!-- 5 surrounding patches, rotated around center -->
+  <ellipse cx="256" cy="392" rx="11" ry="14" fill="#1a1a1a"/>
+  <ellipse cx="256" cy="392" rx="11" ry="14" fill="#1a1a1a" transform="rotate(72,256,418)"/>
+  <ellipse cx="256" cy="392" rx="11" ry="14" fill="#1a1a1a" transform="rotate(144,256,418)"/>
+  <ellipse cx="256" cy="392" rx="11" ry="14" fill="#1a1a1a" transform="rotate(216,256,418)"/>
+  <ellipse cx="256" cy="392" rx="11" ry="14" fill="#1a1a1a" transform="rotate(288,256,418)"/>
+</svg>
