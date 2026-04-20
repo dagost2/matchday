@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png'],
       manifest: {
-        name: 'Wallabies Matchday',
-        short_name: 'Matchday',
-        description: 'Match day tracker for Essendon Royals U9 Wallabies Girls',
+        name: 'U9 Wallabies RED',
+        short_name: 'Wallabies',
+        description: 'Match day tracker for Essendon Royals U9 Wallabies RED Girls',
         theme_color: '#CC0000',
         background_color: '#111111',
         display: 'standalone',

@@ -35,7 +35,7 @@ export default function HomePage() {
   return (
     <div className="pt-4 pb-2">
       <div className="px-4 mb-5">
-        <h1 className="text-2xl font-bold text-white">Wallabies</h1>
+        <h1 className="text-2xl font-bold text-white">U9 Wallabies RED</h1>
         <p className="text-sm text-zinc-400 mt-0.5">Essendon Royals U9 Girls</p>
       </div>
 
