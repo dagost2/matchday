@@ -3,9 +3,22 @@ import { persist } from 'zustand/middleware'
 import type { ActiveMatch, GoalEvent, MatchResult, Player } from '../types'
 
 const DEFAULT_PLAYERS: Player[] = [
-  'Mietta', 'Giulia', 'Harriet', 'Sarina', 'Ella',
-  'Mila', 'Ariana', 'Ava', 'Sofia', 'Zara', 'Meika',
-].map((name) => ({ id: name.toLowerCase(), name }))
+  { id: 'mietta',  name: 'Mietta',  number: 17 },
+  { id: 'giulia',  name: 'Giulia',  number: 15 },
+  { id: 'harriet', name: 'Harriet', number: 6  },
+  { id: 'sarina',  name: 'Sarina',  number: 8  },
+  { id: 'ella',    name: 'Ella',    number: 12 },
+  { id: 'mila',    name: 'Mila',    number: 3  },
+  { id: 'ariana',  name: 'Ariana',  number: 2  },
+  { id: 'ava',     name: 'Ava',     number: 13 },
+  { id: 'sofia',   name: 'Sofia',   number: 9  },
+  { id: 'zara',    name: 'Zara',    number: 5  },
+  { id: 'meika',   name: 'Meika',   number: 4  },
+]
+
+const NUMBERS_MAP: Record<string, number> = Object.fromEntries(
+  DEFAULT_PLAYERS.filter((p) => p.number !== undefined).map((p) => [p.id, p.number!])
+)
 
 interface Store {
   players: Player[]
@@ -200,6 +213,21 @@ export const useStore = create<Store>()(
         return am.secondsElapsedBeforePause + Math.floor((Date.now() - am.halfStartedAt) / 1000)
       },
     }),
-    { name: 'matchday-store' }
+    {
+      name: 'matchday-store',
+      version: 1,
+      migrate: (state: any, version: number) => {
+        if (version === 0) {
+          return {
+            ...state,
+            players: (state.players as Player[]).map((p) => ({
+              ...p,
+              number: p.number ?? NUMBERS_MAP[p.id],
+            })),
+          }
+        }
+        return state
+      },
+    }
   )
 )

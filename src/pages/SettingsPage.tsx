@@ -38,9 +38,14 @@ export default function SettingsPage() {
       </div>
 
       <div className="space-y-2">
-        {players.map((p) => (
+        {[...players].sort((a, b) => (a.number ?? 999) - (b.number ?? 999)).map((p) => (
           <div key={p.id} className="flex items-center justify-between bg-zinc-800 rounded-xl px-4 py-3">
-            <span className="text-white font-medium">{p.name}</span>
+            <div className="flex items-center gap-3">
+              {p.number !== undefined && (
+                <span className="text-zinc-500 text-sm font-bold w-6 text-right">{p.number}</span>
+              )}
+              <span className="text-white font-medium">{p.name}</span>
+            </div>
             <button
               onClick={() => removePlayer(p.id)}
               className="text-zinc-500 active:text-red-400 p-1 -mr-1"

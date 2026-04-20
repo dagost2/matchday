@@ -30,16 +30,21 @@ export default function GoalScorerModal({ onConfirm, onCancel }: Props) {
 
         <div className="overflow-y-auto flex-1 mb-4">
           <div className="grid grid-cols-2 gap-2">
-            {players.map((p) => (
+            {[...players].sort((a, b) => (a.number ?? 999) - (b.number ?? 999)).map((p) => (
               <button
                 key={p.id}
                 onClick={() => { setSelected(p.name); setShowCustom(false) }}
-                className={`py-3 px-4 rounded-xl text-sm font-semibold transition-colors text-left ${
+                className={`py-3 px-4 rounded-xl text-sm font-semibold transition-colors text-left flex items-center gap-2 ${
                   selected === p.name && !showCustom
                     ? 'bg-red-600 text-white'
                     : 'bg-zinc-800 text-zinc-200'
                 }`}
               >
+                {p.number !== undefined && (
+                  <span className={`text-xs font-bold w-6 text-right shrink-0 ${selected === p.name && !showCustom ? 'text-red-200' : 'text-zinc-500'}`}>
+                    {p.number}
+                  </span>
+                )}
                 {p.name}
               </button>
             ))}
