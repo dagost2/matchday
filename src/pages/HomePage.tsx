@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fixtures } from '../data/fixture'
 import { useStore } from '../store/useStore'
@@ -24,6 +25,9 @@ export default function HomePage() {
   const navigate = useNavigate()
   const results = useStore((s) => s.results)
   const activeMatch = useStore((s) => s.activeMatch)
+  const resetMatch = useStore((s) => s.resetMatch)
+
+  const [confirmResetId, setConfirmResetId] = useState<string | null>(null)
 
   const today = new Date().toISOString().split('T')[0]
   const nextFixture = fixtures.find((f) => !f.isBye && f.date >= today && !results[f.id])
@@ -63,10 +67,10 @@ export default function HomePage() {
         }
 
         return (
-          <button
+          <div
             key={fixture.id}
             onClick={() => navigate(`/match/${fixture.id}`)}
-            className={`mx-4 mb-3 w-[calc(100%-2rem)] rounded-xl border p-4 text-left transition-opacity active:opacity-70 ${cardBg}`}
+            className={`mx-4 mb-3 rounded-xl border p-4 cursor-pointer active:opacity-70 transition-opacity ${cardBg}`}
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
@@ -82,8 +86,19 @@ export default function HomePage() {
                   {formatDate(fixture.date)}{fixture.time ? ` · ${fixture.time}` : ''}
                 </p>
               </div>
-              <div className="flex-shrink-0 flex items-center">
+              <div className="flex-shrink-0 flex items-center gap-2">
                 {statusBadge}
+                {result && (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setConfirmResetId(fixture.id) }}
+                    className="p-1.5 text-zinc-500 hover:text-zinc-300 active:text-white transition-colors"
+                    aria-label="Reset result"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                )}
                 {!statusBadge && (
                   <svg className="w-4 h-4 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -91,10 +106,39 @@ export default function HomePage() {
                 )}
               </div>
             </div>
-          </button>
+          </div>
         )
       })}
       <div className="h-4" />
+
+      {confirmResetId && (() => {
+        const f = fixtures.find((x) => x.id === confirmResetId)!
+        const r = results[confirmResetId]
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6">
+            <div className="bg-zinc-900 rounded-2xl p-6 w-full max-w-sm">
+              <h3 className="text-lg font-bold text-white mb-2">Clear result?</h3>
+              <p className="text-zinc-400 text-sm mb-6">
+                This will delete the recorded result ({r.goalsFor}–{r.goalsAgainst}) for {f.round} vs {f.opponent}.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setConfirmResetId(null)}
+                  className="flex-1 py-3 border border-zinc-600 text-zinc-300 rounded-xl font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => { resetMatch(confirmResetId); setConfirmResetId(null) }}
+                  className="flex-1 py-3 bg-red-600 text-white rounded-xl font-bold"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+      })()}
     </div>
   )
 }
