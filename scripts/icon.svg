@@ -2,41 +2,45 @@
   <!-- Red background -->
   <rect width="512" height="512" fill="#CC0000"/>
 
-  <!-- ══ CROWN (white) — base resting on top of ball ══ -->
-  <!-- Crown base rectangle -->
-  <rect x="146" y="218" width="220" height="32" fill="white" rx="6"/>
-  <!-- 5 crown peaks: tall / short / tall(centre) / short / tall -->
-  <polygon fill="white" points="
-    146,222
-    146,196
-    178,110
-    210,196
-    222,152
-    234,196
-    256,96
-    278,196
-    290,152
-    302,196
-    334,110
-    366,196
-    366,222
-  "/>
-  <!-- Jewel circles at each peak tip -->
-  <circle cx="178" cy="105" r="14" fill="white"/>
-  <circle cx="222" cy="147" r="11" fill="white"/>
-  <circle cx="256" cy="90"  r="15" fill="white"/>
-  <circle cx="290" cy="147" r="11" fill="white"/>
-  <circle cx="334" cy="105" r="14" fill="white"/>
-
-  <!-- ══ SOCCER BALL (white) — centred at (256, 340) r=140 ══ -->
-  <circle cx="256" cy="340" r="140" fill="white"/>
+  <!-- ══ SOCCER BALL — centred at (256, 310) r=158 ══ -->
+  <circle cx="256" cy="310" r="158" fill="white"/>
   <!-- Black patches -->
-  <!-- Central pentagon -->
-  <circle cx="256" cy="340" r="36" fill="#1a1a1a"/>
-  <!-- 5 surrounding patches rotated around center -->
-  <ellipse cx="256" cy="284" rx="24" ry="30" fill="#1a1a1a"/>
-  <ellipse cx="256" cy="284" rx="24" ry="30" fill="#1a1a1a" transform="rotate(72,256,340)"/>
-  <ellipse cx="256" cy="284" rx="24" ry="30" fill="#1a1a1a" transform="rotate(144,256,340)"/>
-  <ellipse cx="256" cy="284" rx="24" ry="30" fill="#1a1a1a" transform="rotate(216,256,340)"/>
-  <ellipse cx="256" cy="284" rx="24" ry="30" fill="#1a1a1a" transform="rotate(288,256,340)"/>
+  <circle cx="256" cy="310" r="42" fill="#111"/>
+  <ellipse cx="256" cy="236" rx="28" ry="35" fill="#111"/>
+  <ellipse cx="256" cy="236" rx="28" ry="35" fill="#111" transform="rotate(72,256,310)"/>
+  <ellipse cx="256" cy="236" rx="28" ry="35" fill="#111" transform="rotate(144,256,310)"/>
+  <ellipse cx="256" cy="236" rx="28" ry="35" fill="#111" transform="rotate(216,256,310)"/>
+  <ellipse cx="256" cy="236" rx="28" ry="35" fill="#111" transform="rotate(288,256,310)"/>
+
+  <!-- ══ CROWN — dark, base sitting on top of ball ══ -->
+  <!-- Crown base band -->
+  <rect x="126" y="188" width="260" height="38" fill="#111" rx="6"/>
+  <!-- 5 peaks: outer-tall / inner-short / centre-tall / inner-short / outer-tall -->
+  <polygon fill="#111" points="
+    126,200
+    126,172
+    164,80
+    202,172
+    216,120
+    230,172
+    256,64
+    282,172
+    296,120
+    310,172
+    348,80
+    386,172
+    386,200
+  "/>
+  <!-- Jewel circles at peak tips -->
+  <circle cx="164" cy="74"  r="16" fill="#111"/>
+  <circle cx="216" cy="114" r="12" fill="#111"/>
+  <circle cx="256" cy="57"  r="18" fill="#111"/>
+  <circle cx="296" cy="114" r="12" fill="#111"/>
+  <circle cx="348" cy="74"  r="16" fill="#111"/>
+  <!-- Jewel highlight dots (small white dots to suggest gems) -->
+  <circle cx="164" cy="74"  r="6" fill="white" opacity="0.5"/>
+  <circle cx="216" cy="114" r="4" fill="white" opacity="0.5"/>
+  <circle cx="256" cy="57"  r="7" fill="white" opacity="0.5"/>
+  <circle cx="296" cy="114" r="4" fill="white" opacity="0.5"/>
+  <circle cx="348" cy="74"  r="6" fill="white" opacity="0.5"/>
 </svg>
